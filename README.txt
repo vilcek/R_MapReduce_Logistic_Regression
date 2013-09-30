@@ -10,21 +10,22 @@ To run the examples you will need to download only the 'german.data-numeric' fil
 Using that dataset, the examples show how to use Logistic Regression to predict good and bad credit.
 
 The execution of the first example (logistic_regression.R) should give a result like this:
-steps: 4
-corrects: 143
-wrongs: 57
-accuracy: 0.715
+steps: 1330
+corrects: 151
+wrongs: 49
+accuracy: 0.755
 
-The results above mean that the algorithm converged in 4 steps of Batch Gradient Descent and got 71.5% of the test dataset correct.
+The results above mean that the algorithm converged in 4 steps of Batch Gradient Descent and got 75.5% of the test dataset correct.
 
 The execution of the second example (mr_logistic_regression.R) should give a result like this:
 step: 1
 step: 2
 step: 3
-step: 4
-corrects: 143
-wrongs: 57
-accuracy: 0.715
+step: ...
+step: 1330
+corrects: 151
+wrongs: 49
+accuracy: 0.755
 
 It is worth noting that this is a fairly simple implementation that could probably achieve better results by applying a regularization term to the cost function as well as a feature selection pre-processing.
 
