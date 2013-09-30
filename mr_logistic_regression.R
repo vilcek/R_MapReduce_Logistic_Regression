@@ -72,8 +72,7 @@ hypot <- function(z) {
 
 # gradient of cost function
 gCost <- function(t,X,y) {
-  #t(X)%*%(hypot(X%*%t))-t(X)%*%y
-  t(X)%*%(hypot(X%*%t)-y)
+  1/nrow(X)*(t(X)%*%(hypot(X%*%t)-y))
 }
 
 train <- function(data_train,theta,hypot,gCost) {
@@ -119,7 +118,7 @@ train <- function(data_train,theta,hypot,gCost) {
 # steps = iterations of gradient descent
 # tol = convergence criteria
 # convergence is measured by comparing L2 norm of current gradient and previous one
-alpha <- 0.01
+alpha <- 0.3
 tol <- 1e-6
 step <- 1
 while(T) {
@@ -137,9 +136,9 @@ data_test <- as.matrix(hdfs.get(data_test))
 X_test <- data_test[,1:25]
 y_test <- data_test[,26]
 y_pred <- hypot(X_test%*%theta)
-result <- as.vector(xor(round(y_pred,digits=1),y_test))
-corrects = length(result[result[]==F])
-wrongs = length(result[result[]==T])
+result <- xor(as.vector(round(y_pred)),as.vector(y_test))
+corrects = length(result[result==F])
+wrongs = length(result[result==T])
 cat("corrects: ",corrects,"\n")
 cat("wrongs: ",wrongs,"\n")
 cat("accuracy: ",corrects/length(y_pred),"\n")
@@ -148,11 +147,12 @@ cat("accuracy: ",corrects/length(y_pred),"\n")
 # step:  1 
 # step:  2 
 # step:  3 
-# step:  4 
-# corrects:  143 
-# wrongs:  57 
-# accuracy:  0.715
-# The results above mean that the algorithm converged in 4 steps of Batch Gradient Descent and got 71.5% of the test dataset correct (the test dataset was not used in the training step).
+# ...
+# step:  1330 
+# corrects:  151 
+# wrongs:  49 
+# accuracy:  0.755
+# The results above mean that the algorithm converged in 4 steps of Batch Gradient Descent and got 75.5% of the test dataset correct (the test dataset was not used in the training step).
 
 # Final remarks:
 # this is a very simple example that could be enhanced in several ways
