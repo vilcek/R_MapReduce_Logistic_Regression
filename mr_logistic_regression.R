@@ -62,7 +62,6 @@ data_test <- dataPrep(data,200,"test")
 data_train <- dataPrep(data,200,"train")
 
 # initialize parameters vector theta
-#theta <- as.matrix(rep(0,ncol(hdfs.get("/user/oracle/itau/X_train"))-2))
 theta <- as.matrix(rep(0,25))
 
 # hypothesis function
